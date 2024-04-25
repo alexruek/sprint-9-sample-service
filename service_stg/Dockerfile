@@ -1,8 +1,30 @@
 # Воспользуемся официальным образом для запуска python.
-FROM python:3.10
+FROM python:3.10-slim-bullseye
 
-# Обновим компоненты в контейнере.
-RUN apt-get update -y
+# Определяем переменные окружения для подключения к сервисам
+ARG KAFKA_HOST
+ARG KAFKA_PORT
+ARG KAFKA_CONSUMER_USERNAME
+ARG KAFKA_CONSUMER_PASSWORD
+ARG KAFKA_CONSUMER_GROUP
+ARG KAFKA_SOURCE_TOPIC
+ARG KAFKA_DESTINATION_TOPIC
+
+ARG REDIS_HOST
+ARG REDIS_PORT
+ARG REDIS_PASSWORD
+
+ARG PG_WAREHOUSE_HOST
+ARG PG_WAREHOUSE_PORT
+ARG PG_WAREHOUSE_DBNAME
+ARG PG_WAREHOUSE_USER
+ARG PG_WAREHOUSE_PASSWORD
+
+# Обновляем пакеты и устанавливаем wget
+RUN apt-get update -y \
+    && apt-get install -y wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Копируем все файлы в контейнер.
 COPY . .
