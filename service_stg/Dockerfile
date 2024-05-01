@@ -1,5 +1,5 @@
 # Воспользуемся официальным образом для запуска python.
-FROM python:3.10-slim-bullseye
+FROM amd64/python:3.9-slim
 
 # Определяем переменные окружения для подключения к сервисам
 ARG KAFKA_HOST

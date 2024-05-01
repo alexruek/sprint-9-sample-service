@@ -2,14 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   # Link to your container registry. You will launch it in Yandex Cloud.
   repository: cr.yandex/crpvr71pbdse9fv84e3p/stg_service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2024-04-25-r1"
+  tag: "v2024-05-01-r4"
 
 containerPort: 5000
 
@@ -19,7 +19,7 @@ config:
   KAFKA_CONSUMER_USERNAME: "producer_consumer"
   KAFKA_CONSUMER_PASSWORD: "victor191146"
   KAFKA_CONSUMER_GROUP: "test-consumer1"
-  KAFKA_SOURCE_TOPIC: "stg-service-orders"
+  KAFKA_SOURCE_TOPIC: "order-service_orders"
   KAFKA_STG_SERVICE_ORDERS_TOPIC: "stg-service-orders"
 
   PG_WAREHOUSE_HOST: "rc1b-cvl3kaflshnllees.mdb.yandexcloud.net"
